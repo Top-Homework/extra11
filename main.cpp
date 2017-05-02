@@ -5,8 +5,8 @@ using namespace std;
 // An AVL tree node
 struct Node {
     int key;
-    struct Node *left;
-    struct Node *right;
+    Node *left;
+    Node *right;
     int height;
 };
 
@@ -14,7 +14,7 @@ struct Node {
 int max(int a, int b);
 
 // A utility function to get height of the tree
-int height(struct Node *N) {
+int height(Node *N) {
     if (N == NULL)
         return 0;
     return N->height;
@@ -27,9 +27,8 @@ int max(int a, int b) {
 
 /* Helper function that allocates a new node with the given key and
 	NULL left and right pointers. */
-struct Node *newNode(int key) {
-    struct Node *node = (struct Node *)
-        malloc(sizeof(struct Node));
+Node *newNode(int key) {
+	Node *node = new Node();
     node->key = key;
     node->left = NULL;
     node->right = NULL;
@@ -39,9 +38,9 @@ struct Node *newNode(int key) {
 
 // A utility function to right rotate subtree rooted with y
 // See the diagram given above.
-struct Node *rightRotate(struct Node *y) {
-    struct Node *x = y->left;
-    struct Node *T2 = x->right;
+Node *rightRotate(Node *y) {
+    Node *x = y->left;
+    Node *T2 = x->right;
 
     // Perform rotation
     x->right = y;
@@ -57,9 +56,9 @@ struct Node *rightRotate(struct Node *y) {
 
 // A utility function to left rotate subtree rooted with x
 // See the diagram given above.
-struct Node *leftRotate(struct Node *x) {
-    struct Node *y = x->right;
-    struct Node *T2 = y->left;
+Node *leftRotate(Node *x) {
+    Node *y = x->right;
+    Node *T2 = y->left;
 
     // Perform rotation
     y->left = x;
@@ -74,7 +73,7 @@ struct Node *leftRotate(struct Node *x) {
 }
 
 // Get Balance factor of node N
-int getBalance(struct Node *N) {
+int getBalance(Node *N) {
     if (N == NULL)
         return 0;
     return height(N->left) - height(N->right);
@@ -82,7 +81,7 @@ int getBalance(struct Node *N) {
 
 // Recursive function to insert key in subtree rooted
 // with node and returns new root of subtree.
-struct Node *insert(struct Node *node, int key) {
+Node *insert(Node *node, int key) {
     /* 1. Perform the normal BST insertion */
     if (node == NULL)
         return (newNode(key));
@@ -134,8 +133,8 @@ struct Node *insert(struct Node *node, int key) {
 node with minimum key value found in that tree.
 Note that the entire tree does not need to be
 searched. */
-struct Node * minValueNode(struct Node* node) {
-	struct Node* current = node;
+Node * minValueNode(Node* node) {
+	Node* current = node;
 
 	/* loop down to find the leftmost leaf */
 	while (current->left != NULL)
@@ -147,7 +146,7 @@ struct Node * minValueNode(struct Node* node) {
 // Recursive function to delete a node with given key
 // from subtree with given root. It returns root of
 // the modified subtree.
-struct Node *deleteNode(struct Node *root, int key) {
+Node *deleteNode(Node *root, int key) {
     // STEP 1: PERFORM STANDARD BST DELETE
 
     if (root == NULL)
@@ -168,7 +167,7 @@ struct Node *deleteNode(struct Node *root, int key) {
     else {
         // node with only one child or no child
         if ((root->left == NULL) || (root->right == NULL)) {
-            struct Node *temp = root->left ? root->left : root->right;
+            Node *temp = root->left ? root->left : root->right;
 
             // No child case
             if (temp == NULL) {
@@ -182,7 +181,7 @@ struct Node *deleteNode(struct Node *root, int key) {
         else {
             // node with two children: Get the inorder
             // successor (smallest in the right subtree)
-            struct Node *temp = minValueNode(root->right);
+            Node *temp = minValueNode(root->right);
 
             // Copy the inorder successor's data to this node
             root->key = temp->key;
@@ -231,7 +230,7 @@ struct Node *deleteNode(struct Node *root, int key) {
 // A utility function to print preorder traversal
 // of the tree.
 // The function also prints height of every node
-void preOrder(struct Node *root) {
+void preOrder(Node *root) {
     if (root != NULL) {
         printf("\t%d ", root->key);
         preOrder(root->left);
@@ -239,7 +238,7 @@ void preOrder(struct Node *root) {
     }
 }
 
-void inorder(struct Node *root) {
+void inorder(Node *root) {
     if (root != NULL) {
         inorder(root->left);
         printf("\t%d ", root->key);
@@ -249,7 +248,7 @@ void inorder(struct Node *root) {
 
 /* Drier program to test above function*/
 int main() {
-    struct Node *root = NULL;
+    Node *root = NULL;
 
     // /* Constructing tree given in the above figure */
     // root = insert(root, 10);
@@ -315,6 +314,8 @@ int main() {
     cout << "\tPreorder traversal after deletion of 10 \n";
     preOrder(root);
     cout << endl;
+
+	getchar();
 
     return 0;
 }
