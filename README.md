@@ -1,6 +1,11 @@
 # extra11
 Simple C++ program illustrating AVL tress
 
+## Material used for study
+* Princeton notes [Link](http://www.cs.princeton.edu/courses/archive/spr11/cos423/Lectures/BalancedSearchTreesFinal.pdf)
+* MIT OpenCourseWare video
+* Data Structures Using C++ by Malik
+
 
 ## MIT OpenCourseWare
 * [YouTube Link](https://youtu.be/FNeL18KsWPc)
