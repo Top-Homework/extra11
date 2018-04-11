@@ -73,6 +73,7 @@ Simple C++ program illustrating AVL tress
 	* Note: Actual worst case time complexity is ~1.440 log n but we theorize 2 log n
 
 * Rotation
+	* [Rotations Easily Explained Here](https://www.youtube.com/watch?v=rbg7Qf8GkQ4&t=196s)
 	* __left-rotate(x)__
 		* O(1)
 
