@@ -5,6 +5,7 @@ Simple C++ program illustrating AVL tress
 * Princeton notes [Link](http://www.cs.princeton.edu/courses/archive/spr11/cos423/Lectures/BalancedSearchTreesFinal.pdf)
 * MIT OpenCourseWare video
 * Data Structures Using C++ by Malik
+* [Rotations Easily Explained Here](https://www.youtube.com/watch?v=rbg7Qf8GkQ4&t=196s)
 
 
 ## MIT OpenCourseWare
@@ -73,7 +74,7 @@ Simple C++ program illustrating AVL tress
 	* Note: Actual worst case time complexity is ~1.440 log n but we theorize 2 log n
 
 * Rotation
-	* [Rotations Easily Explained Here](https://www.youtube.com/watch?v=rbg7Qf8GkQ4&t=196s)
+	* [Rotations Easily Explained Here (Same as above link)](https://www.youtube.com/watch?v=rbg7Qf8GkQ4&t=196s)
 	* __left-rotate(x)__
 		* O(1)
 
